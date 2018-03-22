@@ -1,25 +1,26 @@
 <!doctype html>
 <html class="no-js " lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
 
-    <title>:: PACIENTES NUEVOS ::</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <!-- Favicon-->
-    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
-    <!-- Custom Css -->
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/color_skins.css">
+<title>:: Eventos ::</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<!-- Favicon-->
+<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/plugins/fullcalendar/fullcalendar.min.css">
+<!-- Custom Css -->
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/color_skins.css">
 </head>
 <body class="theme-blue menu_dark">
 <!-- Page Loader -->
 <div class="page-loader-wrapper">
     <div class="loader">
         <div class="m-t-30"><img class="zmdi-hc-spin" src="assets/images/logo.svg" width="48" height="48" alt="Oreo"></div>
-        <p>Please wait...</p>
+        <p>Cargando...</p>        
     </div>
 </div>
 <!-- Overlay For Sidebars -->
@@ -226,115 +227,156 @@
     </div>
 </div>
 <!-- Chat-launcher end -->
-
-<section class="content">
-    <div class="block-header"></div>
-    <div class="container-fluid">
-        <div class="row clearfix">
-            <div class="col-md-12">
-                <div class="card patients-list">
-                    <div class="header">
-                        <h2><strong>Pacientes</strong> Lista</h2>
-                    </div>
+<section class="content page-calendar">
+    <div class="block-header">
+       
+    </div>
+    <div class="container-fluid">        
+        <div class="row">
+            <div class="col-md-12 col-lg-4 col-xl-4">
+                <div class="card">
                     <div class="body">
-                        <!-- Tab panes -->
-                        <div class="tab-content m-t-10">
-                            <div class="tab-pane table-responsive active" >
-                                <table class="table m-b-0 table-hover">
-                                    <thead>
-                                        <tr>                 
-                                            <th>No.</th>
-                                            <th>Nombre</th>
-                                            <th>Género</th>
-                                            <th>Fecha de nacimiento</th>
-                                            <th>Fecha de captura</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td><a href="prev_diagnostico.html">Daniel Castillo</a></td>
-                                            <td>Masculino</td>
-                                            <td>14 / 04 / 1993</td>
-                                            <td>11 / 01 / 2018</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td><a href="prev_diagnostico.html">Alejandro Tapia</a></td>
-                                            <td>Masculino</td>
-                                            <td>23 / 04 / 1998</td>
-                                            <td>11 / 01 / 2018</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td><a href="prev_diagnostico.html">Fernanda Peredo</a></td>
-                                            <td>Femenino</td>
-                                            <td>05 / 12 / 2000</td>
-                                            <td>11 / 01 / 2018</td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td><a href="prev_diagnostico.html">Rafael Torres</a></td>
-                                            <td>Masculino</td>
-                                            <td>12 / 10 / 1993</td>
-                                            <td>11 / 01 / 2018</td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td><a href="prev_diagnostico.html">Luis Camacho</a></td>
-                                            <td>Masculino</td>
-                                            <td>08 / 05 / 1995</td>
-                                            <td>11 / 01 / 2018</td>
-                                        </tr>
-                                        <tr>
-                                            <td>6</td>
-                                            <td><a href="prev_diagnostico.html">Andrea Vergara</a></td>
-                                            <td>Femenino</td>
-                                            <td>07 / 07 / 1990</td>
-                                            <td>11 / 01 / 2018</td>
-                                        </tr>
-                                        <tr>
-                                            <td>7</td>
-                                            <td><a href="prev_diagnostico.html">Ricardo Zarate</a></td>
-                                            <td>Masculino</td>
-                                            <td>24 / 11 / 2003</td>
-                                            <td>11 / 01 / 2018</td>
-                                        </tr>
-                                        <tr>
-                                            <td>8</td>
-                                            <td><a href="prev_diagnostico.html">Jose López</a></td>
-                                            <td>Masculino</td>
-                                            <td>22 / 02 / 1987</td>
-                                            <td>11 / 01 / 2018</td>
-                                        </tr>
-                                        <tr>
-                                            <td>9</td>
-                                            <td><a href="prev_diagnostico.html">Diana López</a></td>
-                                            <td>Femenino</td>
-                                            <td>02 / 01 / 2001</td>
-                                            <td>11 / 01 / 2018</td>
-                                        </tr>
-                                        <tr>
-                                            <td>10</td>
-                                            <td><a href="prev_diagnostico.html">Carlos Peralta</a></td>
-                                            <td>Masculino</td>
-                                            <td>28 / 10 / 1980</td>
-                                            <td>11 / 01 / 2018</td>
-                                        </tr>
-                                    </tbody>
-                                </table>                            
+                        <button type="button" class="btn btn-sm btn-round btn-success waves-effect" data-toggle="modal" data-target="#addevent">Add Events</button>
+                        <button class="btn btn-simple btn-sm btn-primary btn-round hidden-lg-up m-t-0 float-right" data-toggle="collapse" data-target="#open-events" aria-expanded="false" aria-controls="collapseExample"><i class="zmdi zmdi-chevron-down"></i></button>                        
+                    </div>
+                </div>
+                <div class="collapse-xs collapse-sm collapse" id="open-events">
+                    <div class="card">
+                        <div class="header">
+                            <h2><strong>Repeating</strong> Event</h2>
+                            <ul class="header-dropdown">
+                                <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                                    <ul class="dropdown-menu dropdown-menu-right slideUp">
+                                        <li><a href="javascript:void(0);">Action</a></li>
+                                        <li><a href="javascript:void(0);">Another action</a></li>
+                                        <li><a href="javascript:void(0);">Something else</a></li>
+                                    </ul>
+                                </li>
+                                <li class="remove">
+                                    <a role="button" class="boxs-close"><i class="zmdi zmdi-close"></i></a>
+                                </li>
+                            </ul>                        
+                        </div>
+                        <div class="body">
+                            <div class="event-name b-lightred row">
+                                <div class="col-2 text-center">
+                                    <h4>09<span>Dec</span><span>2017</span></h4>
+                                </div>
+                                <div class="col-10">
+                                    <h6>Repeating Event</h6>
+                                    <p>It is a long established fact that a reader will be distracted</p>
+                                    <address><i class="zmdi zmdi-pin"></i> 123 6th St. Melbourne, FL 32904</address>
+                                </div>
+                            </div>
+                            <div class="event-name b-greensea row">
+                                <div class="col-2 text-center">
+                                    <h4>16<span>Dec</span><span>2017</span></h4>
+                                </div>
+                                <div class="col-10">
+                                    <h6>Repeating Event</h6>
+                                    <p>It is a long established fact that a reader will be distracted</p>
+                                    <address><i class="zmdi zmdi-pin"></i> 123 6th St. Melbourne, FL 32904</address>
+                                </div>
+                            </div>
+                            <div class="event-name b-primary row">
+                                <div class="col-2 text-center">
+                                    <h4>11<span>Dec</span><span>2017</span></h4>
+                                </div>
+                                <div class="col-10">
+                                    <h6>Conference</h6>
+                                    <p>It is a long established fact that a reader will be distracted</p>
+                                    <address><i class="zmdi zmdi-pin"></i> 123 6th St. Melbourne, FL 32904</address>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="card">
+                        <div class="header">
+                            <h2><strong>Activity</strong></h2>
+                            <ul class="header-dropdown">
+                                <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                                    <ul class="dropdown-menu dropdown-menu-right slideUp">
+                                        <li><a href="javascript:void(0);">Action</a></li>
+                                        <li><a href="javascript:void(0);">Another action</a></li>
+                                        <li><a href="javascript:void(0);">Something else</a></li>
+                                    </ul>
+                                </li>
+                                <li class="remove">
+                                    <a role="button" class="boxs-close"><i class="zmdi zmdi-close"></i></a>
+                                </li>
+                            </ul>                        
+                        </div>
+                        <div class="body">                                                    
+                            <div class="event-name b-primary row">
+                                <div class="col-2 text-center">
+                                    <h4>13<span>Dec</span><span>2017</span></h4>
+                                </div>
+                                <div class="col-10">
+                                    <h6>Birthday</h6>
+                                    <p>It is a long established fact that a reader will be distracted</p>
+                                    <address><i class="zmdi zmdi-pin"></i> 123 6th St. Melbourne, FL 32904</address>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                
                 </div>
+            </div>
+            <div class="col-md-12 col-lg-8 col-xl-8">
+                <div class="card">
+                    <div class="body">
+                        <button class="btn btn-primary btn-sm btn-round waves-effect" id="change-view-today">today</button>
+                        <button class="btn btn-default btn-sm btn-simple btn-round waves-effect" id="change-view-day" >Day</button>
+                        <button class="btn btn-default btn-sm btn-simple btn-round waves-effect" id="change-view-week">Week</button>
+                        <button class="btn btn-default btn-sm btn-simple btn-round waves-effect" id="change-view-month">Month</button>                        
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="body">
+                        <div id="calendar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </div>
+</section>
+<!-- Default Size -->
+<div class="modal fade" id="addevent" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="title" id="defaultModalLabel">Add Event</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <div class="form-line">
+                        <input type="number" class="form-control" placeholder="Event Date">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-line">
+                        <input type="text" class="form-control" placeholder="Event Title">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-line">
+                        <textarea class="form-control no-resize" placeholder="Event Description..."></textarea>
+                    </div>
+                </div>       
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-round waves-effect">Add</button>
+                <button type="button" class="btn btn-simple btn-round waves-effect" data-dismiss="modal">CLOSE</button>
             </div>
         </div>
     </div>
-</section>
+</div>
 <!-- Jquery Core Js --> 
-<script src="assets/bundles/libscripts.bundle.js"></script> <!-- Bootstrap JS and jQuery v3.2.1 -->
-<script src="assets/bundles/vendorscripts.bundle.js"></script> <!-- slimscroll, waves Scripts Plugin Js -->  
+<script src="assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
+<script src="assets/bundles/vendorscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js --> 
+
+<script src="assets/bundles/fullcalendarscripts.bundle.js"></script><!--/ calender javascripts --> 
 
 <script src="assets/bundles/mainscripts.bundle.js"></script><!-- Custom Js --> 
+<script src="assets/js/pages/calendar/calendar.js"></script>
 </body>
 </html>
