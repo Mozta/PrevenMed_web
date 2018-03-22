@@ -6,20 +6,23 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="description" content="Aplicación médica: PrevenMed">
     <meta name="author" content="IDIT" />
-    <title>:: PrevenMed|pacientes nuevos ::</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <!-- Favicon-->
+    <title>:: PREVENMED ::</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon-->
     <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/plugins/jvectormap/jquery-jvectormap-2.0.3.min.css"/>
+    <link rel="stylesheet" href="assets/plugins/morrisjs/morris.min.css" />
     <!-- Custom Css -->
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/color_skins.css">
+
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
 </head>
 <body class="theme-blue menu_dark">
 <!-- Page Loader -->
 <div class="page-loader-wrapper">
     <div class="loader">
         <div class="m-t-30"><img class="zmdi-hc-spin" src="assets/images/logo.svg" width="48" height="48" alt="Oreo"></div>
-        <p>Please wait...</p>
+        <p>Cargando...</p>
     </div>
 </div>
 <!-- Overlay For Sidebars -->
@@ -118,6 +121,7 @@
 </nav>
 <!-- Top Bar End-->
 
+
 <!-- Left Sidebar -->
 <aside id="leftsidebar" class="sidebar">
     <div class=" nav nav-tabs tab-content">
@@ -147,7 +151,6 @@
     </div>
 </aside>
 <!-- Left Sidebar End -->
-
 <!-- Right Sidebar -->
 <aside id="rightsidebar" class="right-sidebar">
     <ul class="nav nav-tabs">
@@ -195,7 +198,6 @@
         </div>
     </div>
 </aside>
-
 <!-- Chat-launcher -->
 <div class="chat-launcher"></div>
 <div class="chat-wrapper" style="width:76%;">
@@ -227,126 +229,114 @@
     </div>
 </div>
 <!-- Chat-launcher end -->
-
-<section class="content">
+<!-- Main Content -->
+<section class="content home">
     <div class="block-header"></div>
+    </div>
     <div class="container-fluid">
+      <div class="row clearfix">
+          <div class="col-lg-4 col-md-6">
+              <div class="card">
+                <ul class="row profile_state list-unstyled">
+                    <li class="col-lg-12">
+                        <div class="body">
+                            <i class="zmdi zmdi-account col-cyan"></i>
+                            <h3 class="number count-to m-b-0" data-from="0" data-to="72" data-speed="2500" data-fresh-interval="700">1600 <i class="zmdi zmdi-trending-up float-right"></i></h3>
+                            <p class="text-muted">PACIENTES NUEVOS</p>
+                        </div>
+                    </li>
+                </ul>
+              </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+              <div class="card">
+                <ul class="row profile_state list-unstyled">
+                    <li class="col-lg-12">
+                        <div class="body">
+                            <i class="zmdi zmdi-comment-edit col-cyan"></i>
+                            <h3 class="number count-to m-b-0" data-from="0" data-to="26" data-speed="2500" data-fresh-interval="700">1600 <i class="zmdi zmdi-trending-up float-right"></i></h3>
+                            <p class="text-muted">DIAGNOSTICOS</p>
+                        </div>
+                    </li>
+                </ul>
+              </div>
+          </div>
+          <div class="col-lg-4 col-md-12">
+              <div class="card">
+                <ul class="row profile_state list-unstyled">
+                    <li class="col-lg-12">
+                        <div class="body">
+                            <i class="zmdi zmdi-hospital col-cyan"></i>
+                            <h3 class="number count-to m-b-0" data-from="0" data-to="3" data-speed="2500" data-fresh-interval="700">1600 <i class="zmdi zmdi-trending-up float-right"></i></h3>
+                            <p class="text-muted">URGENCIAS</p>
+                        </div>
+                    </li>
+                </ul>
+              </div>
+          </div>
+      </div>
         <div class="row clearfix">
-            <div class="col-md-12">
-                <div class="card patients-list">
+            <div class="col-lg-8 col-md-12">
+                <div class="card">
                     <div class="header">
-                        <h2><strong>Pacientes</strong> Lista</h2>
+                        <h2><strong>Información </strong> General</h2>
                     </div>
                     <div class="body">
-                        <!-- Tab panes -->
                         <div class="tab-content m-t-10">
-                            <div class="tab-pane table-responsive active" >
-                                <table class="table m-b-0 table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>No.</th>
-                                            <th>Nombre</th>
-                                            <th>Género</th>
-                                            <th>Fecha de nacimiento</th>
-                                            <th>Fecha de captura</th>
-                                            <th>Estatus</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td><a href="prev_diagnostico.html">Daniel Castillo</a></td>
-                                            <td>Masculino</td>
-                                            <td>14 / 04 / 1993</td>
-                                            <td>11 / 01 / 2018</td>
-                                            <td><span class="badge badge-success">Nuevo</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td><a href="prev_diagnostico.html">Alejandro Tapia</a></td>
-                                            <td>Masculino</td>
-                                            <td>23 / 04 / 1998</td>
-                                            <td>11 / 01 / 2018</td>
-                                            <td><span class="badge badge-success">Nuevo</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td><a href="prev_diagnostico.html">Fernanda Peredo</a></td>
-                                            <td>Femenino</td>
-                                            <td>05 / 12 / 2000</td>
-                                            <td>11 / 01 / 2018</td>
-                                            <td><span class="badge badge-success">Nuevo</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td><a href="prev_diagnostico.html">Rafael Torres</a></td>
-                                            <td>Masculino</td>
-                                            <td>12 / 10 / 1993</td>
-                                            <td>11 / 01 / 2018</td>
-                                            <td><span class="badge badge-success">Nuevo</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td><a href="prev_diagnostico.html">Luis Camacho</a></td>
-                                            <td>Masculino</td>
-                                            <td>08 / 05 / 1995</td>
-                                            <td>11 / 01 / 2018</td>
-                                            <td><span class="badge badge-success">Nuevo</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>6</td>
-                                            <td><a href="prev_diagnostico.html">Andrea Vergara</a></td>
-                                            <td>Femenino</td>
-                                            <td>07 / 07 / 1990</td>
-                                            <td>11 / 01 / 2018</td>
-                                            <td><span class="badge badge-success">Nuevo</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>7</td>
-                                            <td><a href="prev_diagnostico.html">Ricardo Zarate</a></td>
-                                            <td>Masculino</td>
-                                            <td>24 / 11 / 2003</td>
-                                            <td>11 / 01 / 2018</td>
-                                            <td><span class="badge badge-success">Nuevo</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>8</td>
-                                            <td><a href="prev_diagnostico.html">Jose López</a></td>
-                                            <td>Masculino</td>
-                                            <td>22 / 02 / 1987</td>
-                                            <td>11 / 01 / 2018</td>
-                                            <td><span class="badge badge-warning">Diagnosticado</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>9</td>
-                                            <td><a href="prev_diagnostico.html">Diana López</a></td>
-                                            <td>Femenino</td>
-                                            <td>02 / 01 / 2001</td>
-                                            <td>11 / 01 / 2018</td>
-                                            <td><span class="badge badge-warning">Diagnosticado</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>10</td>
-                                            <td><a href="prev_diagnostico.html">Carlos Peralta</a></td>
-                                            <td>Masculino</td>
-                                            <td>28 / 10 / 1980</td>
-                                            <td>11 / 01 / 2018</td>
-                                            <td><span class="badge badge-warning">Diagnosticado</span></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div class="tab-pane active" id="chart-view">
+                                <div id="area_chart" class="graph"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="card">
+                    <div class="body">
+
+                        <div class="table-responsive m-t-20">
+                            <table class="table table-striped m-b-0">
+                                <thead>
+                                    <tr>
+                                        <th>Urgencias</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Fernanda Peredo</td>
+                                        <td><a  title="read more" class="btn btn-primary btn-round">Diagnósticar</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Rafael Torres</td>
+                                        <td><a  title="read more" class="btn btn-primary btn-round">Diagnósticar</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Luis Camacho </td>
+                                        <td><a  title="read more" class="btn btn-primary btn-round">Diagnósticar</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Daniel Castillo</td>
+                                        <td><a  title="read more" class="btn btn-primary btn-round">Diagnósticar</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
+
+
     </div>
 </section>
 <!-- Jquery Core Js -->
-<script src="assets/bundles/libscripts.bundle.js"></script> <!-- Bootstrap JS and jQuery v3.2.1 -->
+<script src="assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js ( jquery.v3.2.1, Bootstrap4 js) -->
 <script src="assets/bundles/vendorscripts.bundle.js"></script> <!-- slimscroll, waves Scripts Plugin Js -->
-
-<script src="assets/bundles/mainscripts.bundle.js"></script><!-- Custom Js -->
+<script src="assets/bundles/morrisscripts.bundle.js"></script><!-- Morris Plugin Js -->
+<script src="assets/bundles/jvectormap.bundle.js"></script> <!-- JVectorMap Plugin Js -->
+<script src="assets/bundles/knob.bundle.js"></script> <!-- Jquery Knob, Count To, Sparkline Js -->
+<script src="assets/bundles/mainscripts.bundle.js"></script>
+<script src="assets/js/pages/index.js"></script>
 </body>
 </html>
