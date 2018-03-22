@@ -14,47 +14,47 @@ function MorrisArea() {
     Morris.Area({
         element: 'area_chart',
         data: [{
-            period: '2011',
-            America: 2,
-            India: 0,
-            Australia: 0
+            Periodo: '2011',
+            Pacientes: 2,
+            Diagnósticos: 0,
+            Urgencias: 0
         }, {
-            period: '2012',
-            America: 31,
-            India: 10,
-            Australia: 5
+            Periodo: '2012',
+            Pacientes: 31,
+            Diagnósticos: 10,
+            Urgencias: 5
         }, {
-            period: '2013',
-            America: 15,
-            India: 28,
-            Australia: 23
+            Periodo: '2013',
+            Pacientes: 15,
+            Diagnósticos: 28,
+            Urgencias: 23
         }, {
-            period: '2014',
-            America: 45,
-            India: 12,
-            Australia: 7
+            Periodo: '2014',
+            Pacientes: 45,
+            Diagnósticos: 12,
+            Urgencias: 7
         }, {
-            period: '2015',
-            America: 20,
-            India: 32,
-            Australia: 55
+            Periodo: '2015',
+            Pacientes: 20,
+            Diagnósticos: 32,
+            Urgencias: 55
         }, {
-            period: '2016',
-            America: 39,
-            India: 67,
-            Australia: 20
+            Periodo: '2016',
+            Pacientes: 39,
+            Diagnósticos: 67,
+            Urgencias: 20
         }, {
-            period: '2017',
-            America: 20,
-            India: 9,
-            Australia: 5
+            Periodo: '2017',
+            Pacientes: 20,
+            Diagnósticos: 9,
+            Urgencias: 5
         }
 
     ],
     lineColors: ['#a890d3', '#FFC107', '#666666'],
-    xkey: 'period',
-    ykeys: ['America', 'India', 'Australia'],
-    labels: ['America', 'India', 'Australia'],
+    xkey: 'Periodo',
+    ykeys: ['Pacientes', 'Diagnósticos', 'Urgencias'],
+    labels: ['Pacientes', 'Diagnósticos', 'Urgencias'],
     pointSize: 0,
     lineWidth: 0,
     resize: true,
@@ -166,7 +166,7 @@ $(function() {
 		   
             markers: [
                 { latLng: [37.09,-95.71], name: 'America' },                
-                { latLng: [-25.27, 133.77], name: 'Australia' },
+                { latLng: [-25.27, 133.77], name: 'Urgencias' },
                 { latLng: [56.13,-106.34], name: 'Canada' },
                 { latLng: [20.59,78.96], name: 'India' },
                 { latLng: [55.37,-3.43], name: 'United Kingdom' },
@@ -233,7 +233,7 @@ $(function() {
 		   
             markers: [
                 { latLng: [37.09,-95.71], name: 'America' },                
-                { latLng: [-25.27, 133.77], name: 'Australia' },
+                { latLng: [-25.27, 133.77], name: 'Urgencias' },
                 { latLng: [56.13,-106.34], name: 'Canada' },
                 { latLng: [20.59,78.96], name: 'India' },
                 { latLng: [55.37,-3.43], name: 'United Kingdom' },
