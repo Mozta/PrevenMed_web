@@ -15,7 +15,7 @@
   const txtPassword = document.getElementById('login-form-password');
   const btnLogin = document.getElementById('login-form-submit');
   const btnSignup = document.getElementById('signup-form-submit');
-  const btnLogout = document.getElementById('logout-form-submit');
+  //const btnLogout = document.getElementById('logout-form-submit');
 
   //Add login event
   btnLogin.addEventListener('click', e => {
@@ -51,9 +51,9 @@
   })
 
   //Add logout event
-  btnLogout.addEventListener('click', e => {
-    firebase.auth().signOut();
-  });
+  //btnLogout.addEventListener('click', e => {
+    //firebase.auth().signOut();
+  //});
 
   //Add a realtime addEventListener
   firebase.auth().onAuthStateChanged(firebaseUser => {
