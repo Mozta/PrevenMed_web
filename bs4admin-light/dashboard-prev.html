@@ -1,0 +1,558 @@
+<!doctype html>
+<html class="no-js " lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="Aplicación médica: PrevenMed">
+    <meta name="author" content="IDIT" />
+    <title>:: PREVENMED ::</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon-->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/plugins/jvectormap/jquery-jvectormap-2.0.3.min.css"/>
+    <link rel="stylesheet" href="assets/plugins/morrisjs/morris.min.css" />
+    <!-- Custom Css -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/color_skins.css">
+
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+</head>
+<body class="theme-blue menu_dark">
+<!-- Page Loader -->
+<div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="m-t-30"><img class="zmdi-hc-spin" src="assets/images/logo.svg" width="48" height="48" alt="Oreo"></div>
+        <p>Cargando...</p>
+    </div>
+</div>
+<!-- Overlay For Sidebars -->
+<div class="overlay"></div>
+
+<!-- Top Bar -->
+<nav class="navbar p-l-5 p-r-5">
+    <ul class="nav navbar-nav navbar-left">
+        <li>
+            <div class="navbar-header">
+                <a class="navbar-brand" ><img src="assets/images/logo-pm.png" width="160" alt="Oreo"></a>
+            </div>
+        </li>
+        <li><a href="javascript:void(0);" class="ls-toggle-btn" data-close="true"><i class="zmdi zmdi-swap"></i></a></li>
+        <li class="hidden-md-down"><a href="prev-eventos.html" title="Events"><i class="zmdi zmdi-calendar"></i></a></li>
+        <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="zmdi zmdi-notifications"></i>
+            <div class="notify"><span class="heartbit"></span><span class="point"></span></div>
+            </a>
+            <ul class="dropdown-menu pullDown">
+                <li class="body">
+                    <ul class="menu list-unstyled">
+                        <li>
+                            <a href="javascript:void(0);">
+                                <div class="media">
+                                    <img class="media-object" src="assets/images/xs/avatar2.jpg" alt="">
+                                    <div class="media-body">
+                                        <span class="name">Pedro <span class="time">30min ago</span></span>
+                                        <span class="message">El paciente Daniel Castillo entró a urgencias.</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">
+                                <div class="media">
+                                    <img class="media-object" src="assets/images/xs/avatar3.jpg" alt="">
+                                    <div class="media-body">
+                                        <span class="name">Sofia <span class="time">31min ago</span></span>
+                                        <span class="message">El paciente Daniel Castillo entró a urgencias.</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">
+                                <div class="media">
+                                    <img class="media-object" src="assets/images/xs/avatar4.jpg" alt="">
+                                    <div class="media-body">
+                                        <span class="name">Isabel <span class="time">35min ago</span></span>
+                                        <span class="message">El paciente Daniel Castillo entró a urgencias.</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">
+                                <div class="media">
+                                    <img class="media-object" src="assets/images/xs/avatar5.jpg" alt="">
+                                    <div class="media-body">
+                                        <span class="name">Alejandro <span class="time">35min ago</span></span>
+                                        <span class="message">El paciente Daniel Castillo entró a urgencias.</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">
+                                <div class="media">
+                                    <img class="media-object" src="assets/images/xs/avatar6.jpg" alt="">
+                                    <div class="media-body">
+                                        <span class="name">Gabriel <span class="time">1hr ago</span></span>
+                                        <span class="message"> El paciente Daniel Castillo entró a urgencias.</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="footer"> <a href="javascript:void(0);">Ver más</a> </li>
+            </ul>
+        </li>
+        <li class="hidden-sm-down">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search...">
+                <span class="input-group-addon">
+                    <i class="zmdi zmdi-search"></i>
+                </span>
+            </div>
+        </li>
+        <li class="float-right">
+            <a href="javascript:void(0);" class="fullscreen hidden-sm-down" data-provide="fullscreen" data-close="true"><i class="zmdi zmdi-fullscreen"></i></a>
+            <a class="mega-menu" data-close="true"><i class="zmdi zmdi-power"></i></a>
+            <a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="zmdi zmdi-settings zmdi-hc-spin"></i></a>
+        </li>
+    </ul>
+</nav>
+<!-- Top Bar End-->
+
+
+<!-- Left Sidebar -->
+<aside id="leftsidebar" class="sidebar">
+    <div class=" nav nav-tabs tab-content">
+        <div class="tab-pane stretchRight active" id="dashboard">
+            <div class="menu">
+                <ul class="list">
+                    <li>
+                        <div class="user-info">
+
+                            <div class="image"><a><img src="assets/images/profile.png" alt="User"></a></div>
+                            <div class="detail">
+                                <h4>Dr. Carlos Ortega Navarrete</h4>
+                                <small>Médico Familiar</small>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="header">MENU</li>
+                    <li class="active open"><a href="index_prevenmed.html"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</aside>
+<!-- Left Sidebar End -->
+<!-- Right Sidebar -->
+<aside id="rightsidebar" class="right-sidebar">
+    <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#setting"><i class="zmdi zmdi-settings zmdi-hc-spin"></i></a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane slideRight active" id="setting">
+            <div class="slim_scroll">
+                <div class="card">
+                    <h6>Ajustes</h6>
+                    <ul class="setting-list list-unstyled">
+                        <li>
+                            <div class="checkbox">
+                                <input id="checkbox1" type="checkbox">
+                                <label for="checkbox1">Opción 1</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <input id="checkbox2" type="checkbox" checked="">
+                                <label for="checkbox2">Opción 2</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <input id="checkbox3" type="checkbox" checked="">
+                                <label for="checkbox3">Opción 3</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <input id="checkbox4" type="checkbox" checked="">
+                                <label for="checkbox4">Opción 4</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="checkbox">
+                                <input id="checkbox4" type="checkbox" checked="">
+                                <label for="checkbox4">Opción 5</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>
+<!-- Chat-launcher -->
+<div class="chat-launcher"></div>
+<div class="chat-wrapper" style="width:76%;">
+    <div class="card" >
+        <div class="header" style="height: 20px;">
+            <ul class="list-unstyled margin-0">
+                <li class="m-r-15"><h2>Dr. Charlotte</h2></li>
+            </ul>
+        </div>
+        <div class="body" style="padding: 5px 5px 5px 5px;">
+            <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 120px;">
+                <div class="chat-widget">
+                    <ul class="chat-scroll-list" >
+                        <li class="left float-left">
+                            <div class="chat-info">
+                                <span class="message">Detalles del diagnóstico </span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Ingresar diagnóstico...">
+                    <span class="input-group-addon">
+                        <i class="zmdi zmdi-mail-send"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Chat-launcher end -->
+<!-- Main Content -->
+<section class="content home">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-5 col-md-5 col-sm-12">
+                <h2>Dashboard
+                <small>Bienvenido a PrevenMed</small>
+                </h2>
+            </div>
+            <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                <div class="inlineblock text-center m-r-15 m-l-15 hidden-md-down">
+                    <div class="sparkline" data-type="bar" data-width="97%" data-height="25px" data-bar-Width="2" data-bar-Spacing="5" data-bar-Color="#fff">3,2,6,5,9,8,7,9,5,1,3,5,7,4,6</div>
+                    <small class="col-white">Visitantes</small>
+                </div>
+                <div class="inlineblock text-center m-r-15 m-l-15 hidden-md-down">
+                    <div class="sparkline" data-type="bar" data-width="97%" data-height="25px" data-bar-Width="2" data-bar-Spacing="5" data-bar-Color="#fff">1,3,5,7,4,6,3,2,6,5,9,8,7,9,5</div>
+                    <small class="col-white">Diagnosticos</small>
+                </div>
+                <ul class="breadcrumb float-md-right">
+                    <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i> Oreo</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row clearfix">
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                    <div class="body">
+                        <h3 class="number count-to m-b-0" data-from="0" data-to="1600" data-speed="2500" data-fresh-interval="700">1600 <i class="zmdi zmdi-trending-up float-right"></i></h3>
+                        <p class="text-muted">Pacientes nuevos</p>
+                        <div class="progress">
+                            <div class="progress-bar l-blush" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" style="width: 68%;"></div>
+                        </div>
+                        <small>Crecimiento de 15%</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card">
+                    <div class="body">
+                        <h3 class="number count-to m-b-0" data-from="0" data-to="3218" data-speed="2500" data-fresh-interval="1000">3218 <i class="zmdi zmdi-trending-up float-right"></i></h3>
+                        <p class="text-muted">Diagnosticos revisados</p>
+                        <div class="progress">
+                            <div class="progress-bar l-green" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" style="width: 68%;"></div>
+                        </div>
+                        <small>Crecimiento de 23%</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="card">
+                    <div class="body">
+                        <h3 class="number count-to m-b-0" data-from="0" data-to="284" data-speed="2500" data-fresh-interval="1000">284 <i class="zmdi zmdi-trending-up float-right"></i></h3>
+                        <p class="text-muted">Médicos autorizados</p>
+                        <div class="progress">
+                            <div class="progress-bar l-parpl" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" style="width: 68%;"></div>
+                        </div>
+                        <small>Crecimiento de 50%</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-lg-8 col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h2><strong>Hospital</strong> Survey</h2>
+                        <ul class="header-dropdown">
+                            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                                <ul class="dropdown-menu dropdown-menu-right slideUp float-right">
+                                    <li><a href="javascript:void(0);">Edit</a></li>
+                                    <li><a href="javascript:void(0);">Delete</a></li>
+                                    <li><a href="javascript:void(0);">Report</a></li>
+                                </ul>
+                            </li>
+                            <li class="remove">
+                                <a role="button" class="boxs-close"><i class="zmdi zmdi-close"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <image src="https://upload.wikimedia.org/wikipedia/commons/2/23/Mexico_Map.svg"></image>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="card">
+                    <div class="body">
+                        <div class="sparkline m-b-10" data-type="bar" data-width="97%" data-height="38px" data-bar-Width="2" data-bar-Spacing="6" data-bar-Color="#555555">2,8,5,3,1,7,9,5,6,4,2,3,1,2,8,5,3,1,7,9,5,6,4,2,3,1</div>
+                        <h6 class="text-center m-b-15">Estados</h6>
+                        <div class="table-responsive m-t-20">
+                            <table class="table table-striped m-b-0">
+                                <thead>
+                                    <tr>
+                                        <th>Estados</th>
+                                        <th>Salud</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Puebla</td>
+                                        <td>215<i class="zmdi zmdi-trending-up m-l-10"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tlaxcala</td>
+                                        <td>189<i class="zmdi zmdi-trending-up m-l-10"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Veracruz</td>
+                                        <td>408<i class="zmdi zmdi-trending-down m-l-10"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hidalgo</td>
+                                        <td>78<i class="zmdi zmdi-trending-down m-l-10"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Guerrero</td>
+                                        <td>148<i class="zmdi zmdi-trending-up m-l-10"></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td>CDMX</td>
+                                        <td>102<i class="zmdi zmdi-trending-down m-l-10"></i></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row clearfix">
+            <div class="col-lg-4 col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h2><strong>Corazón</strong> Electrocardiograma <small>18% Más alto que el mes pasado</small></h2>
+                    </div>
+                    <div class="body">
+                        <div class="sparkline" data-type="line" data-spot-Radius="1" data-highlight-Spot-Color="rgb(233, 30, 99)" data-highlight-Line-Color="#222"
+                            data-min-Spot-Color="rgb(233, 30, 99)" data-max-Spot-Color="rgb(96, 125, 139)" data-spot-Color="rgb(96, 125, 139, 0.7)"
+                            data-offset="90" data-width="100%" data-height="50px" data-line-Width="1" data-line-Color="rgb(96, 125, 139, 0.7)"
+                            data-fill-Color="rgba(96, 125, 139, 0.3)"> 6,4,7,8,4,3,2,2,5,6,7,4,1,5,7,9,9,8,7,6 </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h2><strong>Diagnosticos</strong> Médicos <small>18% Más alto que el mes pasado</small></h2>
+                    </div>
+                    <div class="body">
+                        <div class="sparkline" data-type="line" data-spot-Radius="1" data-highlight-Spot-Color="rgb(233, 30, 99)" data-highlight-Line-Color="#222"
+                            data-min-Spot-Color="rgb(233, 30, 99)" data-max-Spot-Color="rgb(120, 184, 62)" data-spot-Color="rgb(120, 184, 62, 0.7)"
+                            data-offset="90" data-width="100%" data-height="50px" data-line-Width="1" data-line-Color="rgb(120, 184, 62, 0.7)"
+                            data-fill-Color="rgba(120, 184, 62, 0.3)"> 6,4,7,6,9,3,3,5,7,4,2,3,7,6 </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h2><strong>Nuevos</strong> Pacientes <small >18% Más alto que el mes pasado</small></h2>
+                    </div>
+                    <div class="body">
+                        <div class="sparkline" data-type="bar" data-width="97%" data-height="50px" data-bar-Width="4" data-bar-Spacing="10" data-bar-Color="#00ced1">2,8,5,3,1,7,9,5,6,4,2,3,1</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-lg-8 col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h2><strong>Información </strong> General</h2>
+                    </div>
+                    <div class="body">
+                        <div class="tab-content m-t-10">
+                            <div class="tab-pane active" id="chart-view">
+                                <div id="area_chart" class="graph"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="card">
+                    <div class="body">
+
+                        <div class="table-responsive m-t-20">
+                            <table class="table table-striped m-b-0">
+                                <thead>
+                                    <tr>
+                                        <th>Urgencias</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Fernanda Peredo</td>
+                                        <td><a  title="read more" class="btn btn-primary btn-round">Diagnósticar</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Rafael Torres</td>
+                                        <td><a  title="read more" class="btn btn-primary btn-round">Diagnósticar</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Luis Camacho </td>
+                                        <td><a  title="read more" class="btn btn-primary btn-round">Diagnósticar</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Daniel Castillo</td>
+                                        <td><a  title="read more" class="btn btn-primary btn-round">Diagnósticar</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h2><strong>Problemas</strong> Cardiacos</h2>
+                        <ul class="header-dropdown">
+                            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                                <ul class="dropdown-menu dropdown-menu-right slideUp float-right">
+                                    <li><a href="javascript:void(0);">Edit</a></li>
+                                    <li><a href="javascript:void(0);">Delete</a></li>
+                                    <li><a href="javascript:void(0);">Report</a></li>
+                                </ul>
+                            </li>
+                            <li class="remove">
+                                <a role="button" class="boxs-close"><i class="zmdi zmdi-close"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <div id="line_chart" class="graph" style="position: relative; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><svg height="372" version="1.1" width="1430" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="overflow: hidden; position: relative; top: -0.375px;"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël 2.2.0</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs><text x="32.84375" y="339" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">0</tspan></text><path fill="none" stroke="#e0e0e0" d="M45.34375,339H1405" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="32.84375" y="260.5" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">225</tspan></text><path fill="none" stroke="#e0e0e0" d="M45.34375,260.5H1405" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="32.84375" y="182" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">450</tspan></text><path fill="none" stroke="#e0e0e0" d="M45.34375,182H1405" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="32.84375" y="103.49999999999997" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan dy="3.9999999999999716" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">675</tspan></text><path fill="none" stroke="#e0e0e0" d="M45.34375,103.49999999999997H1405" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="32.84375" y="25" text-anchor="end" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">900</tspan></text><path fill="none" stroke="#e0e0e0" d="M45.34375,25H1405" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="1405.0000000000002" y="351.5" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(1,0,0,1,0,7)"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2017</tspan></text><text x="1132.6222290640394" y="351.5" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(1,0,0,1,0,7)"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2016</tspan></text><text x="860.9886596880132" y="351.5" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(1,0,0,1,0,7)"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2015</tspan></text><text x="589.3550903119869" y="351.5" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(1,0,0,1,0,7)"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2014</tspan></text><text x="317.7215209359606" y="351.5" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(1,0,0,1,0,7)"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2013</tspan></text><text x="45.34375" y="351.5" text-anchor="middle" font-family="sans-serif" font-size="12px" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-family: sans-serif; font-size: 12px; font-weight: normal;" font-weight="normal" transform="matrix(1,0,0,1,0,7)"><tspan dy="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2012</tspan></text><path fill="none" stroke="#9d67ff" d="M45.34375,199.44444444444443C113.43819273399015,212.52777777777777,249.62707820197045,251.77777777777777,317.7215209359606,251.77777777777777C385.6299132799672,251.77777777777777,521.4466979679803,222.55833333333334,589.3550903119869,199.44444444444443C657.2634826559935,176.33055555555555,793.0802673440066,60.2813888888889,860.9886596880132,66.86666666666667C928.8970520320197,73.45194444444445,1064.7138367200328,235.5771150630795,1132.6222290640394,252.12666666666667C1200.7166717980297,268.7215595075239,1336.90555726601,212.61499999999998,1405.0000000000002,199.44444444444443" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><path fill="none" stroke="#48c2c2" d="M45.34375,195.95555555555555C113.43819273399015,223.95388888888888,249.62707820197045,307.94888888888886,317.7215209359606,307.94888888888886C385.6299132799672,307.94888888888886,521.4466979679803,201.66861111111112,589.3550903119869,195.95555555555555C657.2634826559935,190.2425,793.0802673440066,257.4472222222222,860.9886596880132,262.2444444444444C928.8970520320197,267.04166666666663,1064.7138367200328,242.60810913512688,1132.6222290640394,234.33333333333331C1200.7166717980297,226.0358869129047,1336.90555726601,205.54999999999998,1405.0000000000002,195.95555555555555" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><path fill="none" stroke="#fcce56" d="M45.34375,164.20666666666665C113.43819273399015,194.82166666666666,249.62707820197045,286.6666666666667,317.7215209359606,286.6666666666667C385.6299132799672,286.6666666666667,521.4466979679803,169.22194444444443,589.3550903119869,164.20666666666665C657.2634826559935,159.19138888888887,793.0802673440066,236.90638888888887,860.9886596880132,246.54444444444442C928.8970520320197,256.1825,1064.7138367200328,251.5892536859705,1132.6222290640394,241.3111111111111C1200.7166717980297,231.00480924152606,1336.90555726601,183.48277777777776,1405.0000000000002,164.20666666666665" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><path fill="none" stroke="#359ef0" d="M45.34375,182C113.43819273399015,203.71833333333333,249.62707820197045,268.87333333333333,317.7215209359606,268.87333333333333C385.6299132799672,268.87333333333333,521.4466979679803,204.6341666666667,589.3550903119869,182C657.2634826559935,159.36583333333334,793.0802673440066,77.55138888888888,860.9886596880132,87.79999999999998C928.8970520320197,98.04861111111109,1064.7138367200328,252.22999696002432,1132.6222290640394,263.9888888888889C1200.7166717980297,275.77999696002433,1336.90555726601,202.4972222222222,1405.0000000000002,182" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><path fill="none" stroke="#fe6283" d="M45.34375,179.20888888888888C113.43819273399015,141.5288888888889,249.62707820197045,28.48888888888888,317.7215209359606,28.48888888888888C385.6299132799672,28.48888888888888,521.4466979679803,151.95194444444442,589.3550903119869,179.20888888888888C657.2634826559935,206.4658333333333,793.0802673440066,235.29277777777776,860.9886596880132,246.54444444444442C928.8970520320197,257.7961111111111,1064.7138367200328,295.35309317525457,1132.6222290640394,269.22222222222223C1200.7166717980297,243.01975984192126,1336.90555726601,95.21388888888889,1405.0000000000002,37.21111111111111" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><circle cx="45.34375" cy="199.44444444444443" r="2" fill="#9d67ff" stroke="#9d67ff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="317.7215209359606" cy="251.77777777777777" r="2" fill="#9d67ff" stroke="#9d67ff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="589.3550903119869" cy="199.44444444444443" r="2" fill="#9d67ff" stroke="#9d67ff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="860.9886596880132" cy="66.86666666666667" r="2" fill="#9d67ff" stroke="#9d67ff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="1132.6222290640394" cy="252.12666666666667" r="2" fill="#9d67ff" stroke="#9d67ff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="1405.0000000000002" cy="199.44444444444443" r="2" fill="#9d67ff" stroke="#9d67ff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="45.34375" cy="195.95555555555555" r="2" fill="#48c2c2" stroke="#48c2c2" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="317.7215209359606" cy="307.94888888888886" r="2" fill="#48c2c2" stroke="#48c2c2" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="589.3550903119869" cy="195.95555555555555" r="2" fill="#48c2c2" stroke="#48c2c2" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="860.9886596880132" cy="262.2444444444444" r="2" fill="#48c2c2" stroke="#48c2c2" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="1132.6222290640394" cy="234.33333333333331" r="2" fill="#48c2c2" stroke="#48c2c2" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="1405.0000000000002" cy="195.95555555555555" r="2" fill="#48c2c2" stroke="#48c2c2" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="45.34375" cy="164.20666666666665" r="2" fill="#fcce56" stroke="#fcce56" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="317.7215209359606" cy="286.6666666666667" r="2" fill="#fcce56" stroke="#fcce56" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="589.3550903119869" cy="164.20666666666665" r="2" fill="#fcce56" stroke="#fcce56" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="860.9886596880132" cy="246.54444444444442" r="2" fill="#fcce56" stroke="#fcce56" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="1132.6222290640394" cy="241.3111111111111" r="2" fill="#fcce56" stroke="#fcce56" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="1405.0000000000002" cy="164.20666666666665" r="2" fill="#fcce56" stroke="#fcce56" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="45.34375" cy="182" r="2" fill="#359ef0" stroke="#359ef0" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="317.7215209359606" cy="268.87333333333333" r="2" fill="#359ef0" stroke="#359ef0" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="589.3550903119869" cy="182" r="2" fill="#359ef0" stroke="#359ef0" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="860.9886596880132" cy="87.79999999999998" r="2" fill="#359ef0" stroke="#359ef0" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="1132.6222290640394" cy="263.9888888888889" r="2" fill="#359ef0" stroke="#359ef0" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="1405.0000000000002" cy="182" r="2" fill="#359ef0" stroke="#359ef0" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="45.34375" cy="179.20888888888888" r="2" fill="#fe6283" stroke="#fe6283" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="317.7215209359606" cy="28.48888888888888" r="2" fill="#fe6283" stroke="#fe6283" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="589.3550903119869" cy="179.20888888888888" r="2" fill="#fe6283" stroke="#fe6283" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="860.9886596880132" cy="246.54444444444442" r="2" fill="#fe6283" stroke="#fe6283" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="1132.6222290640394" cy="269.22222222222223" r="2" fill="#fe6283" stroke="#fe6283" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="1405.0000000000002" cy="37.21111111111111" r="2" fill="#fe6283" stroke="#fe6283" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle></svg><div class="morris-hover morris-default-style" style="left: 1368.5px; top: 52px; display: none;"><div class="morris-hover-row-label">2016</div><div class="morris-hover-point" style="color: #fe6283">
+  WebDesign:
+  200
+</div><div class="morris-hover-point" style="color: #359ef0">
+  Photography:
+  215
+</div><div class="morris-hover-point" style="color: #fcce56">
+  Technology:
+  280
+</div><div class="morris-hover-point" style="color: #48c2c2">
+  Lifestyle:
+  300
+</div><div class="morris-hover-point" style="color: #9d67ff">
+  Sports:
+  249
+</div></div></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-lg-2 col-md-4 col-sm-6 col-6 text-center">
+                <div class="card">
+                    <div class="body">
+                        <p>0-15 años</p>
+                        <input type="text" class="knob" value="42" data-linecap="round" data-width="80" data-height="80" data-thickness="0.15" data-fgColor="#00adef"
+                        readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 col-6 text-center">
+                <div class="card">
+                    <div class="body">
+                        <p>16-30 años</p>
+                        <input type="text" class="knob" value="81" data-linecap="round" data-width="80" data-height="80" data-thickness="0.15" data-fgColor="#49cdd0"
+                        readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 col-6 text-center">
+                <div class="card">
+                    <div class="body">
+                        <p>31-45 años</p>
+                        <input type="text" class="knob" value="62" data-linecap="round" data-width="80" data-height="80" data-thickness="0.15" data-fgColor="#8f78db"
+                        readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 col-6 text-center">
+                <div class="card">
+                    <div class="body">
+                        <p>46-60 años</p>
+                        <input type="text" class="knob" value="38" data-linecap="round" data-width="80" data-height="80" data-thickness="0.15" data-fgColor="#f67a82"
+                        readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 col-6 text-center">
+                <div class="card">
+                    <div class="body">
+                        <p>61-75 años</p>
+                        <input type="text" class="knob" value="87" data-linecap="round" data-width="80" data-height="80" data-thickness="0.15" data-fgColor="#40b988"
+                        readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 col-6 text-center">
+                <div class="card">
+                    <div class="body">
+                        <p>76-100 años</p>
+                        <input type="text" class="knob" value="64" data-linecap="round" data-width="80" data-height="80" data-thickness="0.15" data-fgColor="#f7bb97"
+                        readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Jquery Core Js -->
+<script src="assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js ( jquery.v3.2.1, Bootstrap4 js) -->
+<script src="assets/bundles/vendorscripts.bundle.js"></script> <!-- slimscroll, waves Scripts Plugin Js -->
+<script src="assets/bundles/morrisscripts.bundle.js"></script><!-- Morris Plugin Js -->
+<script src="assets/bundles/jvectormap.bundle.js"></script> <!-- JVectorMap Plugin Js -->
+<script src="assets/bundles/knob.bundle.js"></script> <!-- Jquery Knob, Count To, Sparkline Js -->
+<script src="assets/bundles/mainscripts.bundle.js"></script>
+<script src="assets/js/pages/index.js"></script>
+
+<script type="text/javascript" src ="assets/js/app-index.js"></script>
+</body>
+</html>
